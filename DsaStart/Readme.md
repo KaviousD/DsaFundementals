@@ -2,50 +2,45 @@
 
 ## Fibonacci Sequence
 
-The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1. The sequence goes: 
+The Fibonacci sequence is a list of numbers where each number is the sum of the two numbers before it. It usually starts with 0 and 1, so the sequence looks like this:
 
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 
-Formally, the Fibonacci sequence is defined by the recurrence relation:
+To find a number in the sequence, you add up the two numbers right before it. For example, to get the 5th number, you add 3 and 2 to get 5.
 
-- F(n) = F(n-1) + F(n-2) for n > 1
-- F(0) = 0
-- F(1) = 1
+## Loop vs. Recursion
 
-## Difference Between Loop and Recursion Models
+### Loop Method
+Using a loop to find Fibonacci numbers means using a repeating set of instructions. You start with the first two numbers and keep updating them until you get to the number you want.
 
-### Loop Model
-In the loop-based approach, we use an iterative method to compute the Fibonacci number. This involves initializing two variables to store the first two numbers of the sequence and then updating these variables in a loop until we reach the desired position in the sequence.
+**Pros:**
+- **Efficient:** It uses less memory and runs faster because it doesn’t have to call itself over and over.
+- **Simple:** It’s usually easier to handle big numbers because it doesn’t slow down as much.
 
-**Advantages:**
-- **Efficiency:** Iteration generally uses less memory because it does not involve multiple function calls and stack operations.
-- **Performance:** Better suited for large inputs due to constant space complexity.
+**Cons:**
+- **Less Intuitive:** It might be harder to understand at first compared to the recursive method.
 
-**Disadvantages:**
-- **Less intuitive for some problems:** While efficient, it may be less straightforward to implement for certain complex problems compared to recursion.
+### Recursion Method
+Using recursion means the function calls itself to solve the problem. Each call breaks the problem into smaller pieces until it gets to the simplest case.
 
-### Recursion Model
-In the recursive approach, the function calls itself to break down the problem into smaller subproblems until it reaches the base case. Each function call computes Fibonacci numbers by summing the results of two smaller Fibonacci computations.
+**Pros:**
+- **Simple Code:** The code can be easier to write and understand because it breaks the problem down in a natural way.
+- **Clean:** The solution often looks neat and organized.
 
-**Advantages:**
-- **Simplicity:** Recursion can be more intuitive and simpler to implement for problems defined in terms of smaller subproblems.
-- **Clean Code:** Recursive solutions often lead to cleaner and more readable code.
-
-**Disadvantages:**
-- **Performance Issues:** Recursive implementations can be less efficient due to repeated calculations and a high number of function calls, which increases the time and space complexity.
-- **Stack Overflow:** Large inputs can lead to stack overflow errors due to deep recursion.
+**Cons:**
+- **Slow:** It can be slower and use more memory because it makes a lot of calls to itself.
+- **Risk of Crash:** With very large numbers, it can crash because it uses up a lot of memory.
 
 ## Big O Notation
 
-### Loop Model
-The time complexity of the iterative approach to computing the Fibonacci sequence is **O(n)**, where **n** is the position in the sequence. This is because the algorithm performs a single loop from 2 to **n**, making it linear in relation to the input size.
+### Loop Method
+The loop method has a time complexity of **O(n)**, which means it takes a time that grows linearly with the size of the input. If you want the 10th number, it will take a bit more time than finding the 5th number, but not much.
 
-The space complexity is **O(1)**, as it only uses a fixed amount of extra space regardless of the input size.
+The space complexity is **O(1)**, meaning it uses a fixed amount of memory regardless of the size of the input.
 
-### Recursion Model
-The time complexity of the naive recursive approach is **O(2^n)**. This is because each call generates two more calls, leading to an exponential growth in the number of function calls. The recursion tree grows exponentially with the input size, resulting in inefficient performance for large inputs.
+### Recursion Method
+The recursive method has a time complexity of **O(2^n)**. This means the time it takes grows really quickly as the input gets larger. For big numbers, it becomes very slow.
 
-The space complexity of the recursive approach is **O(n)** due to the call stack. Each recursive call adds a new frame to the call stack, and the maximum depth of the stack is **n**.
+The space complexity is **O(n)** because each function call uses up memory, and the maximum amount of memory used is proportional to the size of the input.
 
-**Conclusion:** While recursion provides a more intuitive solution for the Fibonacci sequence, it is less efficient than iteration. For large inputs, iterative methods are generally preferred due to their better time and space complexity.
-
+**Summary:** The loop method is usually better for larger inputs because it’s faster and uses less memory. Recursion is easier to understand and write but can be slower and use more memory for large numbers.
